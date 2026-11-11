@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Alerta Poscosecha – simulación</title>
+<link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+<main>
+<h1>Alerta Poscosecha</h1>
+<p class="sub">Simulación de un sistema de monitoreo y alerta temprana para pequeños productores de Santander.</p>
+
+<section class="card" aria-live="polite">
+ <div class="status" id="status" data-l="0">
+  <div class="light" aria-hidden="true"></div>
+  <div><p id="word">Todo bien</p><p id="tip"></p></div>
+ </div>
+ <div class="vals">
+  <div class="val"><b id="tv">18 °C</b><span>Temperatura</span></div>
+  <div class="val"><b id="hv">70 %</b><span>Humedad</span></div>
+ </div>
+</section>
+
+<section class="card">
+ <h2>Mi producto y mi bodega</h2>
+ <label for="prod">Producto almacenado</label>
+ <select id="prod">
+  <option value="frutas">Frutas (cítricos, mora, piña)</option>
+  <option value="hortalizas">Hortalizas (tomate, pimentón)</option>
+  <option value="tuberculos">Tubérculos (yuca, papa)</option>
+  <option value="granos">Granos (maíz, fríjol)</option>
+ </select>
+ <label for="t">Temperatura de la bodega: <span id="tl"></span></label>
+ <input type="range" id="t" min="5" max="40" value="18">
+ <label for="h">Humedad de la bodega: <span id="hl"></span></label>
+ <input type="range" id="h" min="30" max="100" value="70">
+ <div class="row">
+  <button id="auto" aria-pressed="false">Simular un día de calor</button>
+  <button id="off" aria-pressed="false">Quedarme sin señal</button>
+  <span class="net" id="net">Con señal</span>
+ </div>
+ <p class="note">Los límites de temperatura y humedad son valores de ejemplo para la demostración; en el sistema real se ajustan por producto.</p>
+</section>
+
+<section class="card">
+ <h2>Mensaje que recibiría el productor</h2>
+ <div id="msg"><p class="empty">Aún no hay alertas. Suba la temperatura o la humedad para ver el aviso.</p></div>
+</section>
+
+<section class="card">
+ <h2>Bitácora de alertas</h2>
+ <ul id="log"><li class="empty">Sin registros todavía.</li></ul>
+ <p class="note">Registro para el extensionista. Todo funciona sin conexión; los avisos quedan en cola y se envían al volver la señal.</p>
+</section>
+</main>
+<script src="js/datos.js"></script>
+<script src="js/logica.js"></script>
+<script src="js/interfaz.js"></script>
+</body>
+</html>
